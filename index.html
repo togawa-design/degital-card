@@ -6,160 +6,234 @@
   <title>小川卓也 | オービット合同会社</title>
   <meta property="og:title" content="小川卓也 | オービット合同会社" />
   <meta property="og:description" content="中小企業の経営に伴走する右腕。AI導入支援・業務効率化・COO代行をワンストップで。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <style>
+    :root {
+      --primary: #0a0a0a;
+      --dark: #171717;
+      --secondary: #525252;
+      --gray: #737373;
+      --accent: #e5e5e5;
+      --bg: #ffffff;
+      --bg-secondary: #fafafa;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       min-height: 100vh;
-      background: #0a0a0f;
-      color: #f0f0f0;
-      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 40px 24px;
     }
 
     .card {
       max-width: 420px;
       width: 100%;
+    }
+
+    /* ヘッダー */
+    .card-header {
       text-align: center;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--accent);
+      margin-bottom: 28px;
     }
 
-    .orbit-visual {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 32px;
-    }
-
-    .orbit-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1.5px solid transparent;
-      border-top-color: #6366f1;
-      animation: spin 3s linear infinite;
-    }
-
-    .orbit-ring:nth-child(2) {
-      inset: 12px;
-      border-top-color: #8b5cf6;
-      animation-duration: 2s;
-      animation-direction: reverse;
-    }
-
-    .orbit-ring:nth-child(3) {
-      inset: 24px;
-      border-top-color: #a78bfa;
-      animation-duration: 1.5s;
-    }
-
-    .orbit-center {
-      position: absolute;
-      inset: 36px;
-      background: radial-gradient(circle, #6366f1, #4f46e5);
-      border-radius: 50%;
+    .logo-mark {
+      width: 64px;
+      height: 64px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 0 24px rgba(99, 102, 241, 0.5);
+      font-size: 28px;
+      margin: 0 auto 20px;
+      background: var(--bg-secondary);
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
-
     .name-ja {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       margin-bottom: 4px;
     }
 
     .name-en {
-      font-size: 13px;
-      color: #888;
-      letter-spacing: 0.15em;
+      font-size: 12px;
+      color: var(--gray);
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
-    .divider {
-      width: 40px;
-      height: 2px;
-      background: linear-gradient(90deg, #6366f1, #8b5cf6);
-      margin: 0 auto 20px;
-      border-radius: 2px;
-    }
-
-    .company {
-      font-size: 14px;
-      color: #a78bfa;
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
+    .company-name {
+      font-size: 13px;
+      color: var(--secondary);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
     }
 
     .tagline {
-      font-size: 13px;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 32px;
-      padding: 0 8px;
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.7;
     }
 
+    /* リンク */
     .links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
+      gap: 8px;
+      margin-bottom: 20px;
     }
 
     .link-btn {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 13px 18px;
-      background: #111118;
-      border: 1px solid #222230;
+      padding: 13px 16px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent);
       border-radius: 12px;
       text-decoration: none;
-      color: #f0f0f0;
-      font-size: 14px;
+      color: var(--dark);
+      font-size: 13px;
       transition: all 0.2s;
     }
 
     .link-btn:hover {
-      border-color: #6366f1;
-      background: #16161f;
-      transform: translateY(-1px);
+      border-color: var(--dark);
+      background: var(--bg);
     }
 
     .link-btn .icon {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 14px;
       flex-shrink: 0;
-      background: #1e1e2e;
     }
 
     .link-btn .label { text-align: left; }
-    .link-btn .label-main { font-size: 13px; font-weight: 600; }
-    .link-btn .label-sub { font-size: 11px; color: #555; margin-top: 1px; }
+    .link-btn .label-main { font-size: 13px; font-weight: 500; }
+    .link-btn .label-sub { font-size: 11px; color: var(--gray); margin-top: 1px; }
 
-    /* --- 診断セクション --- */
+    /* アクションボタン行 */
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .action-btn {
+      padding: 12px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .action-btn:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .action-btn.outline {
+      background: var(--bg);
+      color: var(--dark);
+      border: 1px solid var(--accent);
+    }
+
+    .action-btn.outline:hover {
+      border-color: var(--dark);
+      background: var(--bg);
+    }
+
+    /* QRモーダル */
+    .qr-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .qr-modal.open { display: flex; }
+
+    .qr-inner {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .qr-inner p {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    #qrCanvas {
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .qr-inner small {
+      font-size: 11px;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    .qr-close {
+      margin-top: 16px;
+      padding: 10px 28px;
+      background: var(--dark);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* 診断 */
     .diag-trigger {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, #1e1e2e, #16162a);
-      border: 1px solid #6366f1;
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent);
       border-radius: 12px;
-      color: #a78bfa;
-      font-size: 14px;
-      font-weight: 600;
+      color: var(--dark);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
       cursor: pointer;
       margin-bottom: 24px;
       transition: all 0.2s;
@@ -167,13 +241,12 @@
     }
 
     .diag-trigger:hover {
-      background: linear-gradient(135deg, #25253a, #1e1e35);
-      box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+      border-color: var(--dark);
     }
 
     .diag-box {
-      background: #111118;
-      border: 1px solid #222230;
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent);
       border-radius: 16px;
       padding: 24px 20px;
       margin-bottom: 24px;
@@ -188,15 +261,15 @@
 
     .diag-q {
       font-size: 14px;
-      font-weight: 600;
-      color: #f0f0f0;
+      font-weight: 700;
+      color: var(--dark);
       margin-bottom: 4px;
       line-height: 1.5;
     }
 
     .diag-qsub {
       font-size: 11px;
-      color: #555;
+      color: var(--gray);
       margin-bottom: 16px;
     }
 
@@ -208,10 +281,11 @@
 
     .diag-opt {
       padding: 11px 14px;
-      background: #0a0a0f;
-      border: 1px solid #222230;
+      background: var(--bg);
+      border: 1px solid var(--accent);
       border-radius: 10px;
-      color: #ccc;
+      color: var(--dark);
+      font-family: inherit;
       font-size: 13px;
       cursor: pointer;
       transition: all 0.15s;
@@ -219,61 +293,8 @@
     }
 
     .diag-opt:hover {
-      border-color: #6366f1;
-      color: #f0f0f0;
-      background: #13131f;
+      border-color: var(--dark);
     }
-
-    /* 結果 */
-    .diag-result {
-      display: none;
-      text-align: left;
-    }
-
-    .diag-result.active { display: block; }
-
-    .result-typing {
-      font-size: 13px;
-      color: #a78bfa;
-      line-height: 1.8;
-      min-height: 60px;
-    }
-
-    .result-typing .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 14px;
-      background: #6366f1;
-      margin-left: 2px;
-      vertical-align: middle;
-      animation: blink 0.8s step-end infinite;
-    }
-
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-    .result-cta {
-      margin-top: 16px;
-      padding: 12px 16px;
-      background: linear-gradient(135deg, #1e1e2e, #16162a);
-      border: 1px solid #6366f1;
-      border-radius: 10px;
-      font-size: 12px;
-      color: #888;
-      display: none;
-    }
-
-    .result-cta a { color: #a78bfa; text-decoration: none; }
-
-    .result-retry {
-      margin-top: 12px;
-      font-size: 12px;
-      color: #444;
-      cursor: pointer;
-      text-align: center;
-      display: none;
-    }
-
-    .result-retry:hover { color: #666; }
 
     .progress {
       display: flex;
@@ -283,57 +304,82 @@
 
     .progress-dot {
       flex: 1;
-      height: 3px;
-      background: #222230;
+      height: 2px;
+      background: var(--accent);
       border-radius: 2px;
       transition: background 0.3s;
     }
 
-    .progress-dot.done { background: #6366f1; }
+    .progress-dot.done { background: var(--dark); }
 
-    .ai-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .diag-result { display: none; }
+    .diag-result.active { display: block; }
+
+    .result-typing {
+      font-size: 13px;
+      color: var(--secondary);
+      line-height: 1.8;
+      min-height: 60px;
+    }
+
+    .result-typing .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 13px;
+      background: var(--dark);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .result-cta {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--gray);
+      display: none;
+    }
+
+    .result-cta a { color: var(--dark); text-decoration: underline; }
+
+    .result-retry {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--gray);
+      cursor: pointer;
+      text-align: center;
+      display: none;
+    }
+
+    .result-retry:hover { color: var(--dark); }
+
+    /* フッター */
+    .card-footer {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--accent);
       font-size: 11px;
-      color: #555;
-      padding: 6px 12px;
-      border: 1px solid #1e1e2e;
-      border-radius: 20px;
-    }
-
-    .ai-dot {
-      width: 6px;
-      height: 6px;
-      background: #6366f1;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      color: var(--accent);
+      letter-spacing: 0.08em;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="orbit-visual">
-      <div class="orbit-ring"></div>
-      <div class="orbit-ring"></div>
-      <div class="orbit-ring"></div>
-      <div class="orbit-center">🪐</div>
-    </div>
-
-    <div class="name-ja">小川 卓也</div>
-    <div class="name-en">Takuya Ogawa</div>
-
-    <div class="divider"></div>
-
-    <div class="company">オービット合同会社</div>
-    <div class="tagline">
-      中小企業の経営に伴走する右腕。<br>
-      AI導入支援・業務効率化・COO代行を<br>ワンストップで。
+    <div class="card-header">
+      <div class="logo-mark">🪐</div>
+      <div class="name-ja">小川 卓也</div>
+      <div class="name-en">Takuya Ogawa</div>
+      <div class="company-name">オービット合同会社</div>
+      <div class="tagline">
+        中小企業の経営に伴走する右腕。<br>
+        AI導入支援・業務効率化・COO代行をワンストップで。
+      </div>
     </div>
 
     <div class="links">
@@ -360,43 +406,43 @@
       </a>
     </div>
 
-    <!-- 診断ボタン -->
+    <div class="action-row">
+      <button class="action-btn" onclick="saveContact()">連絡先に保存</button>
+      <button class="action-btn outline" onclick="openQR()">QRコードを表示</button>
+    </div>
+
     <button class="diag-trigger" onclick="startDiag()">
       🤖 あなたの会社に何が効く？ 30秒診断
     </button>
 
-    <!-- 診断ボックス -->
     <div class="diag-box" id="diagBox">
       <div class="progress">
         <div class="progress-dot" id="p0"></div>
         <div class="progress-dot" id="p1"></div>
       </div>
 
-      <!-- Q1 -->
       <div class="diag-step active" id="step0">
         <div class="diag-q">今いちばん困っていることは？</div>
         <div class="diag-qsub">直感で選んでください</div>
         <div class="diag-options">
-          <div class="diag-opt" onclick="answer(0, 0)">👥 人手が足りない</div>
-          <div class="diag-opt" onclick="answer(0, 1)">🔒 業務が属人化している</div>
-          <div class="diag-opt" onclick="answer(0, 2)">🚀 新しいことを始めたいけど手が回らない</div>
-          <div class="diag-opt" onclick="answer(0, 3)">🤖 DX・AIを導入したいけど何から始めればいい</div>
+          <div class="diag-opt" onclick="answer(0,0)">👥 人手が足りない</div>
+          <div class="diag-opt" onclick="answer(0,1)">🔒 業務が属人化している</div>
+          <div class="diag-opt" onclick="answer(0,2)">🚀 新しいことを始めたいけど手が回らない</div>
+          <div class="diag-opt" onclick="answer(0,3)">🤖 DX・AIを導入したいけど何から始めればいい</div>
         </div>
       </div>
 
-      <!-- Q2 -->
       <div class="diag-step" id="step1">
         <div class="diag-q">会社の規模は？</div>
         <div class="diag-qsub">おおよそで大丈夫です</div>
         <div class="diag-options">
-          <div class="diag-opt" onclick="answer(1, 0)">1〜5人</div>
-          <div class="diag-opt" onclick="answer(1, 1)">6〜20人</div>
-          <div class="diag-opt" onclick="answer(1, 2)">21〜50人</div>
-          <div class="diag-opt" onclick="answer(1, 3)">50人以上</div>
+          <div class="diag-opt" onclick="answer(1,0)">1〜5人</div>
+          <div class="diag-opt" onclick="answer(1,1)">6〜20人</div>
+          <div class="diag-opt" onclick="answer(1,2)">21〜50人</div>
+          <div class="diag-opt" onclick="answer(1,3)">50人以上</div>
         </div>
       </div>
 
-      <!-- 結果 -->
       <div class="diag-result" id="result">
         <div class="result-typing" id="resultText"><span class="cursor"></span></div>
         <div class="result-cta" id="resultCta">
@@ -407,44 +453,71 @@
       </div>
     </div>
 
-    <div class="ai-badge">
-      <div class="ai-dot"></div>
-      Powered by AI
+    <div class="card-footer">ORBIT LLC · Powered by AI</div>
+  </div>
+
+  <!-- QRモーダル -->
+  <div class="qr-modal" id="qrModal" onclick="closeQR(event)">
+    <div class="qr-inner">
+      <p>このページのQRコード</p>
+      <canvas id="qrCanvas"></canvas>
+      <small id="qrUrl"></small>
+      <br>
+      <button class="qr-close" onclick="document.getElementById('qrModal').classList.remove('open')">閉じる</button>
     </div>
   </div>
 
   <script>
+    // --- QRコード ---
+    function openQR() {
+      const url = window.location.href;
+      document.getElementById('qrUrl').textContent = url;
+      QRCode.toCanvas(document.getElementById('qrCanvas'), url, {
+        width: 200,
+        margin: 2,
+        color: { dark: '#171717', light: '#ffffff' }
+      });
+      document.getElementById('qrModal').classList.add('open');
+    }
+
+    function closeQR(e) {
+      if (e.target === document.getElementById('qrModal')) {
+        document.getElementById('qrModal').classList.remove('open');
+      }
+    }
+
+    // --- 連絡先保存（vCard）---
+    function saveContact() {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'N:小川;卓也;;;',
+        'FN:小川 卓也',
+        'ORG:オービット合同会社',
+        'TITLE:代表',
+        'EMAIL:t.ogawa@obt-llc.com',
+        'URL:https://www.obt-llc.com/',
+        'X-SOCIALPROFILE;type=facebook:https://www.facebook.com/takuya.ogawa.94',
+        'END:VCARD'
+      ].join('\r\n');
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ogawa-takuya.vcf';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // --- 診断 ---
     const answers = {};
 
     const results = [
-      // 課題0: 人手が足りない
-      [
-        "少人数でも回せる仕組み作りが鍵です。\nAIで定型業務を自動化し、限られた人材がコア業務に集中できる体制を一緒に設計します。",
-        "チームが小さいうちこそ、仕組みで勝負するタイミングです。\n業務フローの整理とAI活用で、今の人数のまま生産性を倍にするアプローチをご提案できます。",
-        "成長フェーズで人が足りないのは良いサインです。\nでも採用より先に仕組みを整えると、採用後の定着率も上がります。まずは業務の棚卸しから。",
-        "組織が大きくなるほど、非効率が隠れやすくなります。\nAIと業務改善を組み合わせて、コストを抑えながらアウトプットを増やす打ち手があります。",
-      ],
-      // 課題1: 属人化
-      [
-        "属人化は少人数では避けられませんが、解決策はあります。\n「その人がいなくても回る」状態をAIと仕組みで作ります。",
-        "属人化の解消は、組織が10人を超える前にやるのがベストです。\nナレッジの整理とAI活用で、誰でも一定のアウトプットが出せる体制を作れます。",
-        "このフェーズで属人化を放置すると、採用コストが倍増します。\nまず「どの業務が属人化しているか」を可視化するところから始めましょう。",
-        "大企業の属人化は根が深いですが、AI導入で突破口が開けます。\n特定部署・特定業務に絞ったスモールスタートが効果的です。",
-      ],
-      // 課題2: 新しいことを始めたい
-      [
-        "アイデアはある、でも手が回らない。それなら「実行する手」を外部に持つのが最速です。\nCOO代行として、企画から実行まで伴走します。",
-        "チームのリソースを新規事業に使うには、既存業務の効率化が先です。\nAIで日常業務を圧縮し、コアメンバーの時間を新規に向ける設計をします。",
-        "このフェーズでよくある罠は「検討期間が長くなりすぎる」こと。\nスモールスタートで早期に検証できる形を一緒に作りましょう。",
-        "大きな組織での新規事業は、社内調整コストが高いですよね。\n外部パートナーとして入ることで、スピードを落とさず推進できます。",
-      ],
-      // 課題3: DX・AI導入
-      [
-        "AI導入で最初につまずくのは「何から始めるか」です。\n御社の業務を聞いた上で、費用対効果が最も高い一手をご提案します。まずは30分話しましょう。",
-        "ツールを入れるより先に「何を自動化したいか」を明確にするのがコツです。\n御社の規模なら、チャットボット・議事録自動化・営業支援あたりが費用対効果高いです。",
-        "このフェーズでAIを導入するなら、全社展開より部門単位で始めるのがおすすめです。\n成功事例を作ってから広げると社内の抵抗も少なくなります。",
-        "大きい組織でのAI導入は、ガバナンスとセキュリティが最初の壁になります。\nそこを含めてワンストップで対応できるのがオービットの強みです。",
-      ],
+      ['少人数でも回せる仕組み作りが鍵です。\nAIで定型業務を自動化し、限られた人材がコア業務に集中できる体制を一緒に設計します。','チームが小さいうちこそ、仕組みで勝負するタイミングです。\n業務フローの整理とAI活用で、今の人数のまま生産性を倍にするアプローチをご提案できます。','成長フェーズで人が足りないのは良いサインです。\nでも採用より先に仕組みを整えると、採用後の定着率も上がります。まずは業務の棚卸しから。','組織が大きくなるほど、非効率が隠れやすくなります。\nAIと業務改善を組み合わせて、コストを抑えながらアウトプットを増やす打ち手があります。'],
+      ['属人化は少人数では避けられませんが、解決策はあります。\n「その人がいなくても回る」状態をAIと仕組みで作ります。','属人化の解消は、組織が10人を超える前にやるのがベストです。\nナレッジの整理とAI活用で、誰でも一定のアウトプットが出せる体制を作れます。','このフェーズで属人化を放置すると、採用コストが倍増します。\nまず「どの業務が属人化しているか」を可視化するところから始めましょう。','大企業の属人化は根が深いですが、AI導入で突破口が開けます。\n特定部署・特定業務に絞ったスモールスタートが効果的です。'],
+      ['アイデアはある、でも手が回らない。それなら「実行する手」を外部に持つのが最速です。\nCOO代行として、企画から実行まで伴走します。','チームのリソースを新規事業に使うには、既存業務の効率化が先です。\nAIで日常業務を圧縮し、コアメンバーの時間を新規に向ける設計をします。','このフェーズでよくある罠は「検討期間が長くなりすぎる」こと。\nスモールスタートで早期に検証できる形を一緒に作りましょう。','大きな組織での新規事業は、社内調整コストが高いですよね。\n外部パートナーとして入ることで、スピードを落とさず推進できます。'],
+      ['AI導入で最初につまずくのは「何から始めるか」です。\n御社の業務を聞いた上で、費用対効果が最も高い一手をご提案します。まずは30分話しましょう。','ツールを入れるより先に「何を自動化したいか」を明確にするのがコツです。\n御社の規模なら、チャットボット・議事録自動化・営業支援あたりが費用対効果高いです。','このフェーズでAIを導入するなら、全社展開より部門単位で始めるのがおすすめです。\n成功事例を作ってから広げると社内の抵抗も少なくなります。','大きい組織でのAI導入は、ガバナンスとセキュリティが最初の壁になります。\nそこを含めてワンストップで対応できるのがオービットの強みです。'],
     ];
 
     function startDiag() {
@@ -455,7 +528,6 @@
     function answer(q, a) {
       answers[q] = a;
       document.getElementById('p' + q).classList.add('done');
-
       if (q === 0) {
         document.getElementById('step0').classList.remove('active');
         document.getElementById('step1').classList.add('active');
@@ -467,11 +539,8 @@
 
     function showResult() {
       document.getElementById('p1').classList.add('done');
-      const resultEl = document.getElementById('result');
-      resultEl.classList.add('active');
-
-      const text = results[answers[0]][answers[1]];
-      typeText('resultText', text, () => {
+      document.getElementById('result').classList.add('active');
+      typeText('resultText', results[answers[0]][answers[1]], () => {
         document.getElementById('resultCta').style.display = 'block';
         document.getElementById('retryBtn').style.display = 'block';
       });
@@ -481,10 +550,7 @@
       const el = document.getElementById(elId);
       el.innerHTML = '<span class="cursor"></span>';
       const lines = text.split('\n');
-      let charIdx = 0;
-      let lineIdx = 0;
-      let content = '';
-
+      let lineIdx = 0, charIdx = 0, content = '';
       function next() {
         if (lineIdx >= lines.length) {
           el.innerHTML = content.replace(/\n/g, '<br>');
@@ -493,14 +559,11 @@
         }
         const line = lines[lineIdx];
         if (charIdx < line.length) {
-          content += line[charIdx];
-          charIdx++;
+          content += line[charIdx++];
           el.innerHTML = content.replace(/\n/g, '<br>') + '<span class="cursor"></span>';
           setTimeout(next, 28);
         } else {
-          content += '\n';
-          lineIdx++;
-          charIdx = 0;
+          content += '\n'; lineIdx++; charIdx = 0;
           setTimeout(next, 80);
         }
       }
@@ -508,8 +571,7 @@
     }
 
     function resetDiag() {
-      answers[0] = undefined;
-      answers[1] = undefined;
+      answers[0] = answers[1] = undefined;
       ['p0','p1'].forEach(id => document.getElementById(id).classList.remove('done'));
       document.getElementById('result').classList.remove('active');
       document.getElementById('resultCta').style.display = 'none';
