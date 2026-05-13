@@ -26,7 +26,6 @@
       text-align: center;
     }
 
-    /* AI particle animation */
     .orbit-visual {
       position: relative;
       width: 120px;
@@ -68,9 +67,7 @@
       box-shadow: 0 0 24px rgba(99, 102, 241, 0.5);
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .name-ja {
       font-size: 28px;
@@ -114,7 +111,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .link-btn {
@@ -146,26 +143,153 @@
       justify-content: center;
       font-size: 16px;
       flex-shrink: 0;
+      background: #1e1e2e;
     }
 
-    .link-btn .label {
+    .link-btn .label { text-align: left; }
+    .link-btn .label-main { font-size: 13px; font-weight: 600; }
+    .link-btn .label-sub { font-size: 11px; color: #555; margin-top: 1px; }
+
+    /* --- 診断セクション --- */
+    .diag-trigger {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #1e1e2e, #16162a);
+      border: 1px solid #6366f1;
+      border-radius: 12px;
+      color: #a78bfa;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 24px;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .diag-trigger:hover {
+      background: linear-gradient(135deg, #25253a, #1e1e35);
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+    }
+
+    .diag-box {
+      background: #111118;
+      border: 1px solid #222230;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+      text-align: left;
+      display: none;
+    }
+
+    .diag-box.active { display: block; }
+
+    .diag-step { display: none; }
+    .diag-step.active { display: block; }
+
+    .diag-q {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f0f0f0;
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .diag-qsub {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .diag-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .diag-opt {
+      padding: 11px 14px;
+      background: #0a0a0f;
+      border: 1px solid #222230;
+      border-radius: 10px;
+      color: #ccc;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
       text-align: left;
     }
 
-    .link-btn .label-main {
+    .diag-opt:hover {
+      border-color: #6366f1;
+      color: #f0f0f0;
+      background: #13131f;
+    }
+
+    /* 結果 */
+    .diag-result {
+      display: none;
+      text-align: left;
+    }
+
+    .diag-result.active { display: block; }
+
+    .result-typing {
       font-size: 13px;
-      font-weight: 600;
+      color: #a78bfa;
+      line-height: 1.8;
+      min-height: 60px;
     }
 
-    .link-btn .label-sub {
-      font-size: 11px;
-      color: #555;
-      margin-top: 1px;
+    .result-typing .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 14px;
+      background: #6366f1;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
     }
 
-    .icon-web { background: #1e1e2e; }
-    .icon-mail { background: #1a1e2e; }
-    .icon-fb { background: #1a1e2e; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .result-cta {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #1e1e2e, #16162a);
+      border: 1px solid #6366f1;
+      border-radius: 10px;
+      font-size: 12px;
+      color: #888;
+      display: none;
+    }
+
+    .result-cta a { color: #a78bfa; text-decoration: none; }
+
+    .result-retry {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #444;
+      cursor: pointer;
+      text-align: center;
+      display: none;
+    }
+
+    .result-retry:hover { color: #666; }
+
+    .progress {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .progress-dot {
+      flex: 1;
+      height: 3px;
+      background: #222230;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    .progress-dot.done { background: #6366f1; }
 
     .ai-badge {
       display: inline-flex;
@@ -214,21 +338,21 @@
 
     <div class="links">
       <a class="link-btn" href="https://www.obt-llc.com/" target="_blank" rel="noopener">
-        <div class="icon icon-web">🌐</div>
+        <div class="icon">🌐</div>
         <div class="label">
           <div class="label-main">obt-llc.com</div>
           <div class="label-sub">会社サイト</div>
         </div>
       </a>
       <a class="link-btn" href="mailto:t.ogawa@obt-llc.com">
-        <div class="icon icon-mail">✉️</div>
+        <div class="icon">✉️</div>
         <div class="label">
           <div class="label-main">t.ogawa@obt-llc.com</div>
           <div class="label-sub">メール</div>
         </div>
       </a>
       <a class="link-btn" href="https://www.facebook.com/takuya.ogawa.94" target="_blank" rel="noopener">
-        <div class="icon icon-fb">👤</div>
+        <div class="icon">👤</div>
         <div class="label">
           <div class="label-main">Facebook</div>
           <div class="label-sub">友達申請お気軽に</div>
@@ -236,10 +360,163 @@
       </a>
     </div>
 
+    <!-- 診断ボタン -->
+    <button class="diag-trigger" onclick="startDiag()">
+      🤖 あなたの会社に何が効く？ 30秒診断
+    </button>
+
+    <!-- 診断ボックス -->
+    <div class="diag-box" id="diagBox">
+      <div class="progress">
+        <div class="progress-dot" id="p0"></div>
+        <div class="progress-dot" id="p1"></div>
+      </div>
+
+      <!-- Q1 -->
+      <div class="diag-step active" id="step0">
+        <div class="diag-q">今いちばん困っていることは？</div>
+        <div class="diag-qsub">直感で選んでください</div>
+        <div class="diag-options">
+          <div class="diag-opt" onclick="answer(0, 0)">👥 人手が足りない</div>
+          <div class="diag-opt" onclick="answer(0, 1)">🔒 業務が属人化している</div>
+          <div class="diag-opt" onclick="answer(0, 2)">🚀 新しいことを始めたいけど手が回らない</div>
+          <div class="diag-opt" onclick="answer(0, 3)">🤖 DX・AIを導入したいけど何から始めればいい</div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="diag-step" id="step1">
+        <div class="diag-q">会社の規模は？</div>
+        <div class="diag-qsub">おおよそで大丈夫です</div>
+        <div class="diag-options">
+          <div class="diag-opt" onclick="answer(1, 0)">1〜5人</div>
+          <div class="diag-opt" onclick="answer(1, 1)">6〜20人</div>
+          <div class="diag-opt" onclick="answer(1, 2)">21〜50人</div>
+          <div class="diag-opt" onclick="answer(1, 3)">50人以上</div>
+        </div>
+      </div>
+
+      <!-- 結果 -->
+      <div class="diag-result" id="result">
+        <div class="result-typing" id="resultText"><span class="cursor"></span></div>
+        <div class="result-cta" id="resultCta">
+          詳しく話を聞いてみませんか？<br>
+          <a href="mailto:t.ogawa@obt-llc.com">t.ogawa@obt-llc.com</a> までお気軽に。
+        </div>
+        <div class="result-retry" id="retryBtn" onclick="resetDiag()">もう一度やり直す →</div>
+      </div>
+    </div>
+
     <div class="ai-badge">
       <div class="ai-dot"></div>
       Powered by AI
     </div>
   </div>
+
+  <script>
+    const answers = {};
+
+    const results = [
+      // 課題0: 人手が足りない
+      [
+        "少人数でも回せる仕組み作りが鍵です。\nAIで定型業務を自動化し、限られた人材がコア業務に集中できる体制を一緒に設計します。",
+        "チームが小さいうちこそ、仕組みで勝負するタイミングです。\n業務フローの整理とAI活用で、今の人数のまま生産性を倍にするアプローチをご提案できます。",
+        "成長フェーズで人が足りないのは良いサインです。\nでも採用より先に仕組みを整えると、採用後の定着率も上がります。まずは業務の棚卸しから。",
+        "組織が大きくなるほど、非効率が隠れやすくなります。\nAIと業務改善を組み合わせて、コストを抑えながらアウトプットを増やす打ち手があります。",
+      ],
+      // 課題1: 属人化
+      [
+        "属人化は少人数では避けられませんが、解決策はあります。\n「その人がいなくても回る」状態をAIと仕組みで作ります。",
+        "属人化の解消は、組織が10人を超える前にやるのがベストです。\nナレッジの整理とAI活用で、誰でも一定のアウトプットが出せる体制を作れます。",
+        "このフェーズで属人化を放置すると、採用コストが倍増します。\nまず「どの業務が属人化しているか」を可視化するところから始めましょう。",
+        "大企業の属人化は根が深いですが、AI導入で突破口が開けます。\n特定部署・特定業務に絞ったスモールスタートが効果的です。",
+      ],
+      // 課題2: 新しいことを始めたい
+      [
+        "アイデアはある、でも手が回らない。それなら「実行する手」を外部に持つのが最速です。\nCOO代行として、企画から実行まで伴走します。",
+        "チームのリソースを新規事業に使うには、既存業務の効率化が先です。\nAIで日常業務を圧縮し、コアメンバーの時間を新規に向ける設計をします。",
+        "このフェーズでよくある罠は「検討期間が長くなりすぎる」こと。\nスモールスタートで早期に検証できる形を一緒に作りましょう。",
+        "大きな組織での新規事業は、社内調整コストが高いですよね。\n外部パートナーとして入ることで、スピードを落とさず推進できます。",
+      ],
+      // 課題3: DX・AI導入
+      [
+        "AI導入で最初につまずくのは「何から始めるか」です。\n御社の業務を聞いた上で、費用対効果が最も高い一手をご提案します。まずは30分話しましょう。",
+        "ツールを入れるより先に「何を自動化したいか」を明確にするのがコツです。\n御社の規模なら、チャットボット・議事録自動化・営業支援あたりが費用対効果高いです。",
+        "このフェーズでAIを導入するなら、全社展開より部門単位で始めるのがおすすめです。\n成功事例を作ってから広げると社内の抵抗も少なくなります。",
+        "大きい組織でのAI導入は、ガバナンスとセキュリティが最初の壁になります。\nそこを含めてワンストップで対応できるのがオービットの強みです。",
+      ],
+    ];
+
+    function startDiag() {
+      document.querySelector('.diag-trigger').style.display = 'none';
+      document.getElementById('diagBox').classList.add('active');
+    }
+
+    function answer(q, a) {
+      answers[q] = a;
+      document.getElementById('p' + q).classList.add('done');
+
+      if (q === 0) {
+        document.getElementById('step0').classList.remove('active');
+        document.getElementById('step1').classList.add('active');
+      } else {
+        document.getElementById('step1').classList.remove('active');
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('p1').classList.add('done');
+      const resultEl = document.getElementById('result');
+      resultEl.classList.add('active');
+
+      const text = results[answers[0]][answers[1]];
+      typeText('resultText', text, () => {
+        document.getElementById('resultCta').style.display = 'block';
+        document.getElementById('retryBtn').style.display = 'block';
+      });
+    }
+
+    function typeText(elId, text, onDone) {
+      const el = document.getElementById(elId);
+      el.innerHTML = '<span class="cursor"></span>';
+      const lines = text.split('\n');
+      let charIdx = 0;
+      let lineIdx = 0;
+      let content = '';
+
+      function next() {
+        if (lineIdx >= lines.length) {
+          el.innerHTML = content.replace(/\n/g, '<br>');
+          if (onDone) onDone();
+          return;
+        }
+        const line = lines[lineIdx];
+        if (charIdx < line.length) {
+          content += line[charIdx];
+          charIdx++;
+          el.innerHTML = content.replace(/\n/g, '<br>') + '<span class="cursor"></span>';
+          setTimeout(next, 28);
+        } else {
+          content += '\n';
+          lineIdx++;
+          charIdx = 0;
+          setTimeout(next, 80);
+        }
+      }
+      next();
+    }
+
+    function resetDiag() {
+      answers[0] = undefined;
+      answers[1] = undefined;
+      ['p0','p1'].forEach(id => document.getElementById(id).classList.remove('done'));
+      document.getElementById('result').classList.remove('active');
+      document.getElementById('resultCta').style.display = 'none';
+      document.getElementById('retryBtn').style.display = 'none';
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step0').classList.add('active');
+    }
+  </script>
 </body>
 </html>
