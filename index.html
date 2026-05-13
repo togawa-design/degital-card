@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <style>
     :root {
       --primary: #0a0a0a;
@@ -508,7 +507,7 @@
   <div class="qr-modal" id="qrModal" onclick="closeQR(event)">
     <div class="qr-inner">
       <p>このページのQRコード</p>
-      <canvas id="qrCanvas"></canvas>
+      <img id="qrImg" src="" alt="QR Code" width="200" height="200" style="display:block;margin:0 auto 16px;border-radius:8px;" />
       <small id="qrUrl"></small>
       <br>
       <button class="qr-close" onclick="document.getElementById('qrModal').classList.remove('open')">閉じる</button>
@@ -520,11 +519,8 @@
     function openQR() {
       const url = window.location.href;
       document.getElementById('qrUrl').textContent = url;
-      QRCode.toCanvas(document.getElementById('qrCanvas'), url, {
-        width: 200,
-        margin: 2,
-        color: { dark: '#171717', light: '#ffffff' }
-      });
+      document.getElementById('qrImg').src =
+        'https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=171717&bgcolor=ffffff&data=' + encodeURIComponent(url);
       document.getElementById('qrModal').classList.add('open');
     }
 
